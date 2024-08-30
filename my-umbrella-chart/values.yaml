@@ -1,0 +1,54 @@
+# Default values for myapp.
+replicaCount: 1
+
+
+image:
+  repository: yardengz/yarden
+  pullPolicy: IfNotPresent
+  tag: latest
+
+
+postgres:
+  name: postgres
+  replicas: 1
+  image:
+    repository: postgres
+    tag: latest
+    pullPolicy: IfNotPresent
+  user: postgres
+  password:
+    secretName: postgres-secret
+    secretKey: password
+  db: postgres
+  ports:
+    containerPort: 5432
+    servicePort: 5432
+  serviceName: db
+
+
+flaskApp:
+  name: flask-app
+  replicas: 1
+  image:
+    repository: yardengz/yarden
+    tag: latest
+    pullPolicy: IfNotPresent
+  ports:
+    containerPort: 8087
+    servicePort: 8087
+  dbHost: db
+  dbPort: 5432
+  dbOptions: "options=-csearch_path=school"
+
+
+service:
+  type: NodePort
+  port: 8087
+  nodePort: 30007  # You can specify NodePort if needed
+
+kube-prometheus-stack:
+  prometheus:
+    prometheusSpec:
+      serviceMonitorSelector:
+        matchLabels:
+          release: prometheus
