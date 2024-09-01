@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboard-custom
+  labels:
+    grafana_dashboard: "1"
+data:
+  my-dashboard.json: |
+    {{ .Files.Get "dashboards/my-dashboard.json" | nindent 4 }}

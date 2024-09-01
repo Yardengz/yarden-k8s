@@ -52,3 +52,7 @@ kube-prometheus-stack:
       serviceMonitorSelector:
         matchLabels:
           release: prometheus
+
+grafana:
+  dashboardsConfigMaps:
+    default: grafana-dashboard-custom
