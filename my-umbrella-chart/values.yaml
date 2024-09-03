@@ -5,9 +5,8 @@ replicaCount: 1
 kube-prometheus-stack:
   prometheus:
     prometheusSpec:
-      serviceMonitorSelector:
-        matchLabels:
-          release: prometheus
+      serviceMonitorNamespaceSelector: { }
+      serviceMonitorSelector: { }
 
 grafana:
   dashboardsConfigMaps:
