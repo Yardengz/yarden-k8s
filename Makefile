@@ -6,7 +6,7 @@ NAMESPACE=monitoring
 # Target to deploy monitoring
 deploy_monitoring:
 	@echo "Deploying monitoring stack..."
-	helm install ${HELM_CHART_NAME} ${CHART_PATH} --namespace ${NAMESPACE} --create-namespace
+	helm upgrade --install ${HELM_CHART_NAME} ${CHART_PATH} --namespace ${NAMESPACE} --create-namespace
 
 # Target to remove monitoring
 remove_monitoring:
