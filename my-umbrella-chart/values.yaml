@@ -1,0 +1,13 @@
+# Default values for myapp.
+replicaCount: 1
+
+
+kube-prometheus-stack:
+  prometheus:
+    prometheusSpec:
+      serviceMonitorNamespaceSelector: { }
+      serviceMonitorSelector: { }
+
+grafana:
+  dashboardsConfigMaps:
+    default: grafana-dashboard-custom

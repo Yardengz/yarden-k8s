@@ -1,0 +1,8 @@
+apiVersion: v2
+name: my-umbrella-chart
+description: A Helm chart for deploying Flask app and monitoring stack
+version: 0.1.0
+dependencies:
+  - name: kube-prometheus-stack
+    version: 47.0.1
+    repository: https://prometheus-community.github.io/helm-charts
